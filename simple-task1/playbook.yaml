@@ -1,0 +1,14 @@
+- name: Menjalankan Container Ubuntu - Niko
+  hosts: btj-academy
+  become: true
+  tasks:
+    - docker_container:
+        name: python-latest
+        image: 'programNilaiMahasiswa.py'
+        interactive: true
+        tty: true
+        ports:
+          - "8082:8082"
+    -ansible.bulltin.file:
+        path: /tmp/testing
+        state: touch
